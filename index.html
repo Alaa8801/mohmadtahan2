@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>دعوة زفاف | محمد & أميرته</title>
+
+  <!-- الخطوط العربية الفاخرة -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- مكتبة Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- أيقونات Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            pearl: '#FAF9F6',
+            champagne: '#F5ECE1',
+            champagneDark: '#E8D9C5',
+            slateBronze: '#2B211A',
+            softBronze: '#5A493D',
+            gold: {
+              100: '#FCF7EB',
+              200: '#F5E7C7',
+              300: '#ECD29A',
+              400: '#DFB76E',
+              500: '#D4AF37',
+              600: '#BA8F26',
+              700: '#8E6B15',
+              800: '#63490B',
+            }
+          },
+          fontFamily: {
+            quran: ['"Amiri Quran"', 'serif'],
+            amiri: ['Amiri', 'serif'],
+            ruqaa: ['"Aref Ruqaa"', 'serif'],
+            cairo: ['Cairo', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #FAF9F6;
+      background-image: 
+        radial-gradient(#DFB76E 0.65px, transparent 0.65px), 
+        radial-gradient(#E8D9C5 0.65px, #FAF9F6 0.65px);
+      background-size: 26px 26px;
+      background-position: 0 0, 13px 13px;
+      color: #2B211A;
+      font-family: 'Amiri', serif;
+      overflow-x: hidden;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+
+    .liquid-gold-text {
+      background: linear-gradient(135deg, #8E6B15 0%, #D4AF37 32%, #FFF4D9 50%, #BA8F26 75%, #63490B 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .wax-seal {
+      background: radial-gradient(circle at 35% 35%, #FFF2D1, #DFB76E 36%, #BA8F26 74%, #6E4D06 100%);
+      box-shadow: 
+        0 12px 28px rgba(110, 77, 6, 0.45),
+        inset 0 2px 5px rgba(255, 255, 255, 0.85),
+        inset 0 -3px 6px rgba(70, 48, 5, 0.7);
+    }
+
+    @keyframes sealGlow {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.6), 0 12px 28px rgba(110, 77, 6, 0.4);
+        transform: scale(1);
+      }
+      50% {
+        box-shadow: 0 0 0 16px rgba(212, 175, 55, 0), 0 15px 35px rgba(110, 77, 6, 0.55);
+        transform: scale(1.05);
+      }
+    }
+    .animate-seal-glow {
+      animation: sealGlow 2.5s infinite ease-in-out;
+    }
+
+    .envelope-flap {
+      transform-origin: top center;
+      transition: transform 0.85s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .envelope-flap.opened {
+      transform: rotateX(180deg);
+      z-index: 1 !important;
+    }
+
+    .inner-card-slide {
+      transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+    }
+    .card-out {
+      transform: translateY(-90px) scale(1.03);
+      z-index: 40 !important;
+    }
+
+    @keyframes radiantGold {
+      0%, 100% {
+        box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5), 0 0 0 0 rgba(212, 175, 55, 0.4);
+        transform: translateY(0);
+      }
+      50% {
+        box-shadow: 0 12px 35px rgba(212, 175, 55, 0.8), 0 0 0 12px rgba(212, 175, 55, 0);
+        transform: translateY(-2px);
+      }
+    }
+    .btn-radiant-gold {
+      animation: radiantGold 2.4s infinite ease-in-out;
+    }
+
+    @keyframes sheenMove {
+      0% { transform: translateX(-150%) skewX(-25deg); }
+      30%, 100% { transform: translateX(250%) skewX(-25deg); }
+    }
+    .sheen-effect::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 55%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+      animation: sheenMove 3.6s infinite ease-in-out;
+    }
+
+    .royal-deckle-frame {
+      box-shadow: 
+        0 25px 50px -12px rgba(43, 33, 26, 0.15),
+        0 0 0 1px rgba(212, 175, 55, 0.35),
+        0 0 0 8px #FAF9F6,
+        0 0 0 9.5px rgba(212, 175, 55, 0.3);
+    }
+
+    #petals-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 15;
+    }
+
+    /* زر التحكم بالصوت العائم */
+    .music-control-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 60;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: white;
+      border: 2px solid #D4AF37;
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #8E6B15;
+      font-size: 1.25rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .music-control-btn:hover {
+      transform: scale(1.08);
+    }
+    .music-spinning {
+      animation: spinMusic 5s linear infinite;
+    }
+    @keyframes spinMusic {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+
+<body class="w-full min-h-screen relative flex flex-col justify-between items-center px-4 py-6 sm:py-10">
+
+  <!-- عنصر الصوت المرفق -->
+  <audio id="weddingAudio" loop preload="auto">
+    <source src="audio.mp3" type="audio/mpeg">
+    متصفحك لا يدعم تشغيل الصوت.
+  </audio>
+
+  <!-- زر التحكم بالصوت (إيقاف / تشغيل) -->
+  <button id="toggleMusicBtn" class="music-control-btn hidden" aria-label="التحكم بالصوت">
+    <i id="musicIcon" class="fa-solid fa-volume-high"></i>
+  </button>
+
+  <!-- كانفاس البتلات التفاعلية -->
+  <canvas id="petals-canvas"></canvas>
+
+  <main class="w-full max-w-xl mx-auto flex flex-col items-center justify-center relative z-20 my-auto">
+
+    <!-- ==================== المرحلة الأولى: المظروف والختم الشمعي الملكي ==================== -->
+    <div id="envelopeSection" class="w-full flex flex-col items-center justify-center py-2">
+
+      <div class="text-center mb-6 space-y-2">
+        <span class="inline-block px-4 py-1.5 text-xs font-cairo font-bold text-gold-700 bg-champagne rounded-full border border-gold-300 shadow-sm tracking-wider">
+          بِطَاقَةُ دَعْوَةٍ زَفَافٍ مَلَكِيَّة
+        </span>
+        <h1 class="text-2xl sm:text-3xl font-ruqaa text-slateBronze font-bold">
+          حفل زفاف مبارك
+        </h1>
+        <p class="text-xs font-cairo text-softBronze font-semibold">
+          نَسْعَدُ وَنَتَشَرَّفُ بِحُضُورِكُمْ الكَرِيم
+        </p>
+      </div>
+
+      <!-- المظروف -->
+      <div 
+        id="openEnvelopeBtn" 
+        class="relative w-full max-w-[340px] sm:max-w-[420px] aspect-[4/3] mx-auto cursor-pointer group"
+        role="button" 
+        tabindex="0"
+        aria-label="انقر على الختم لفتح الدعوة"
+      >
+        <div class="absolute inset-0 bg-[#EFE7DC] rounded-2xl shadow-2xl border border-gold-200/90 overflow-hidden">
+          <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:18px_18px]"></div>
+        </div>
+
+        <!-- معاينة البطاقة داخل المظروف -->
+        <div id="previewCard" class="absolute inset-x-4 top-4 bottom-4 bg-white rounded-xl border border-gold-300/80 shadow-sm flex flex-col items-center justify-center p-4 text-center z-10 inner-card-slide">
+          <p class="font-cairo text-[11px] font-bold text-gold-700">دَعْوَةُ زَفَاف</p>
+          <p class="font-ruqaa text-2xl sm:text-3xl text-slateBronze font-bold mt-1">محمد & أميرته</p>
+          <div class="w-16 h-[1.5px] bg-gold-400 my-2"></div>
+          <p class="font-cairo font-bold text-xs text-softBronze">الخميس 19 نوفمبر 2026</p>
+          <p class="font-cairo text-[11px] text-gold-800 mt-0.5">صالة ورد بلس</p>
+        </div>
+
+        <div class="absolute inset-0 z-20 pointer-events-none">
+          <svg class="w-full h-full filter drop-shadow-sm" viewBox="0 0 400 300" preserveAspectRatio="none">
+            <polygon points="0,0 200,165 0,300" fill="#FAF5ED" stroke="#E0D1BC" stroke-width="0.8"/>
+            <polygon points="400,0 200,165 400,300" fill="#F7F1E6" stroke="#E0D1BC" stroke-width="0.8"/>
+            <polygon points="0,300 200,145 400,300" fill="#F2E9DD" stroke="#D7C5AC" stroke-width="0.9"/>
+          </svg>
+        </div>
+
+        <div class="absolute top-1/2 left-0 right-0 h-10 -translate-y-1/2 bg-gradient-to-r from-[#DFB76E]/40 via-[#FFF4D9]/80 to-[#DFB76E]/40 border-y border-gold-300/80 z-25 pointer-events-none shadow-sm flex items-center justify-center">
+          <div class="w-full h-[1px] bg-gold-400/50"></div>
+        </div>
+
+        <div id="envelopeFlap" class="absolute top-0 left-0 right-0 h-1/2 z-30 envelope-flap pointer-events-none">
+          <svg class="w-full h-full" viewBox="0 0 400 150" preserveAspectRatio="none">
+            <polygon points="0,0 200,150 400,0" fill="#FDFBFA" stroke="#D8C8B1" stroke-width="0.9"/>
+          </svg>
+        </div>
+
+        <!-- الختم الشمعي الملكي (م) -->
+        <div id="waxSealWrapper" class="absolute left-1/2 top-[52%] -translate-x-1/2 -translate-y-1/2 z-40 flex flex-col items-center">
+          <div class="wax-seal w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center animate-seal-glow cursor-pointer transition-transform duration-300 group-hover:scale-105 active:scale-95">
+            <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-dashed border-[#FFF7E3]/85 flex items-center justify-center bg-gradient-to-b from-transparent via-[#D4AF37]/20 to-[#6E4D06]/40">
+              <div class="flex items-center justify-center font-ruqaa text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.65)] select-none">
+                <span class="text-3xl sm:text-4xl font-bold">م</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 px-4 py-1.5 rounded-full bg-white/95 border-2 border-gold-400 text-slateBronze font-cairo text-xs sm:text-sm font-bold shadow-xl shadow-gold-500/20 flex items-center gap-2 animate-bounce">
+            <i class="fa-regular fa-hand-pointer text-gold-600 text-sm"></i>
+            <span>انقر على الختم لفتح الدعوة</span>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="text-xs text-softBronze font-cairo font-semibold text-center mt-6">
+        اضغط على الختم الشمعي لعرض التفاصيل وسماع التهنئة ✨
+      </p>
+
+    </div>
+
+
+    <!-- ==================== المرحلة الثانية: بطاقة الدعوة الملكية الكاملة ==================== -->
+    <div id="cardSection" class="hidden w-full opacity-0 transform translate-y-8 transition-all duration-1000 ease-out">
+      
+      <div class="royal-deckle-frame bg-white rounded-3xl p-6 sm:p-10 relative overflow-hidden text-center space-y-7 border border-gold-300/80">
+        
+        <div class="absolute inset-0 opacity-[0.035] pointer-events-none bg-[radial-gradient(#D4AF37_1.5px,transparent_1.5px)] [background-size:20px_20px]"></div>
+
+        <!-- الزخارف الركنية -->
+        <svg class="absolute top-3 right-3 w-12 h-12 text-gold-500 opacity-60" viewBox="0 0 50 50" fill="none" stroke="currentColor">
+          <path d="M4 4 H25 C35 4 45 14 45 25 V45" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="12" cy="12" r="2.5" fill="currentColor"/>
+          <path d="M4 4 Q20 10 25 25 Q10 20 4 4" fill="rgba(212, 175, 55, 0.15)"/>
+        </svg>
+
+        <svg class="absolute top-3 left-3 w-12 h-12 text-gold-500 opacity-60 transform -scale-x-100" viewBox="0 0 50 50" fill="none" stroke="currentColor">
+          <path d="M4 4 H25 C35 4 45 14 45 25 V45" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="12" cy="12" r="2.5" fill="currentColor"/>
+          <path d="M4 4 Q20 10 25 25 Q10 20 4 4" fill="rgba(212, 175, 55, 0.15)"/>
+        </svg>
+
+        <svg class="absolute bottom-3 right-3 w-12 h-12 text-gold-500 opacity-60 transform -scale-y-100" viewBox="0 0 50 50" fill="none" stroke="currentColor">
+          <path d="M4 4 H25 C35 4 45 14 45 25 V45" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="12" cy="12" r="2.5" fill="currentColor"/>
+          <path d="M4 4 Q20 10 25 25 Q10 20 4 4" fill="rgba(212, 175, 55, 0.15)"/>
+        </svg>
+
+        <svg class="absolute bottom-3 left-3 w-12 h-12 text-gold-500 opacity-60 transform -scale-x-100 -scale-y-100" viewBox="0 0 50 50" fill="none" stroke="currentColor">
+          <path d="M4 4 H25 C35 4 45 14 45 25 V45" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="12" cy="12" r="2.5" fill="currentColor"/>
+          <path d="M4 4 Q20 10 25 25 Q10 20 4 4" fill="rgba(212, 175, 55, 0.15)"/>
+        </svg>
+
+        <!-- البسملة والآية -->
+        <div class="space-y-3">
+          <p class="font-quran text-gold-700 text-lg sm:text-xl font-bold">
+            بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
+          </p>
+
+          <div class="flex items-center justify-center gap-3">
+            <span class="h-[1px] w-12 bg-gradient-to-r from-transparent to-gold-400"></span>
+            <i class="fa-solid fa-crown text-gold-500 text-xs"></i>
+            <span class="h-[1px] w-12 bg-gradient-to-l from-transparent to-gold-400"></span>
+          </div>
+
+          <div class="bg-champagne/65 border border-gold-200/90 rounded-2xl p-4 sm:p-5 max-w-lg mx-auto shadow-sm">
+            <p class="font-quran text-slateBronze text-base sm:text-lg leading-[2.2] font-normal">
+              ﴿وَمِنْ ءَايَٰتِهِۦٓ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَٰجًا لِّتَسْكُنُوٓا۟ إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً﴾
+            </p>
+          </div>
+        </div>
+
+        <div class="py-1">
+          <h2 class="font-cairo text-softBronze text-base sm:text-lg md:text-xl font-bold leading-relaxed px-2">
+            يتشرف العروسان بدعوتكم لمشاركتهما فرحة العمر
+          </h2>
+        </div>
+
+        <!-- أسماء العروسين -->
+        <div class="py-1">
+          <h1 class="text-4xl sm:text-5xl md:text-6xl font-ruqaa liquid-gold-text font-bold tracking-wide drop-shadow-sm py-1">
+            محمد & أميرته
+          </h1>
+          <div class="flex items-center justify-center gap-2 mt-2">
+            <span class="h-[1px] w-12 bg-gold-400"></span>
+            <i class="fa-solid fa-heart text-gold-500 text-xs"></i>
+            <span class="h-[1px] w-12 bg-gold-400"></span>
+          </div>
+        </div>
+
+        <!-- أبيات الترحيب -->
+        <div class="bg-gradient-to-b from-champagne/45 to-transparent p-4 rounded-2xl border-t border-b border-gold-200/80 max-w-md mx-auto">
+          <p class="font-amiri text-slateBronze text-base sm:text-lg leading-loose italic font-bold">
+            أهلاً وسهلاً بمن لبى دعوتنا ... وحضر ليشاركنا سرورنا وبهجتنا<br>
+            حضوركم تاجٌ يزين عرسنا ... مرحباً بكم يا صفوة الأحبابِ
+          </p>
+        </div>
+
+        <!-- تفاصيل الموعد -->
+        <div class="bg-champagne/75 border-2 border-gold-300 rounded-2xl p-5 shadow-sm space-y-2.5">
+          <div class="flex items-center justify-center gap-2 text-xs font-cairo font-bold text-gold-800">
+            <i class="fa-regular fa-calendar-check text-gold-600"></i>
+            <span>موعد الحفل المبارك</span>
+          </div>
+          
+          <div class="text-2xl sm:text-3xl font-ruqaa text-slateBronze font-bold">
+            الخميس 19 نوفمبر 2026 م
+          </div>
+
+          <div class="inline-block px-5 py-1.5 rounded-full bg-white border border-gold-300 text-gold-800 font-cairo text-sm font-bold shadow-sm">
+            <i class="fa-regular fa-clock text-xs ml-1 text-gold-600"></i>
+            الساعة 7:00 مساءً
+          </div>
+        </div>
+
+        <!-- المؤقت التنازلي -->
+        <div class="space-y-3">
+          <p class="text-xs font-cairo text-softBronze font-bold flex items-center justify-center gap-2">
+            <i class="fa-solid fa-hourglass-half text-gold-600 animate-pulse text-xs"></i>
+            <span>الوقت المتبقي حتى موعد الحفل</span>
+          </p>
+
+          <div class="grid grid-cols-4 gap-2 sm:gap-3 max-w-sm mx-auto">
+            <div class="bg-white border border-gold-300 rounded-xl p-2.5 sm:p-3 shadow-sm flex flex-col items-center">
+              <span id="days" class="text-2xl sm:text-3xl font-extrabold font-cairo text-gold-700">--</span>
+              <span class="text-[11px] font-cairo font-bold text-softBronze mt-0.5">أيام</span>
+            </div>
+            <div class="bg-white border border-gold-300 rounded-xl p-2.5 sm:p-3 shadow-sm flex flex-col items-center">
+              <span id="hours" class="text-2xl sm:text-3xl font-extrabold font-cairo text-gold-700">--</span>
+              <span class="text-[11px] font-cairo font-bold text-softBronze mt-0.5">ساعات</span>
+            </div>
+            <div class="bg-white border border-gold-300 rounded-xl p-2.5 sm:p-3 shadow-sm flex flex-col items-center">
+              <span id="minutes" class="text-2xl sm:text-3xl font-extrabold font-cairo text-gold-700">--</span>
+              <span class="text-[11px] font-cairo font-bold text-softBronze mt-0.5">دقائق</span>
+            </div>
+            <div class="bg-white border border-gold-300 rounded-xl p-2.5 sm:p-3 shadow-sm flex flex-col items-center">
+              <span id="seconds" class="text-2xl sm:text-3xl font-extrabold font-cairo text-gold-700">--</span>
+              <span class="text-[11px] font-cairo font-bold text-softBronze mt-0.5">ثواني</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- تفاصيل المكان ورابط الخريطة -->
+        <div class="bg-champagne/55 border border-gold-300 rounded-2xl p-5 sm:p-6 space-y-4">
+          <div class="flex flex-col items-center space-y-1">
+            <span class="w-12 h-12 rounded-full bg-gold-100 border-2 border-gold-300 flex items-center justify-center text-gold-700 mb-1 shadow-sm">
+              <i class="fa-solid fa-hotel text-lg"></i>
+            </span>
+            <span class="text-xs font-cairo font-bold text-gold-800">مكان الحفل</span>
+            <h3 class="text-2xl sm:text-3xl font-bold font-ruqaa text-slateBronze">
+              صالة ورد بلس
+            </h3>
+            <p class="font-cairo text-xs sm:text-sm text-softBronze font-semibold mt-1">
+              سيف الدولة - جانب مول السلام
+            </p>
+          </div>
+
+          <!-- زر الموقع المحدث -->
+          <a 
+            href="https://maps.app.goo.gl/FHJ4JKpJ8LYPsRpY9?g_st=aw" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="relative inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-4 w-full rounded-2xl bg-gradient-to-r from-gold-600 via-gold-400 to-gold-600 text-white font-cairo font-extrabold text-base sm:text-lg shadow-xl btn-radiant-gold sheen-effect overflow-hidden transition-all duration-300 active:scale-95 hover:brightness-105"
+          >
+            <i class="fa-solid fa-map-location-dot text-xl"></i>
+            <span>موقع الصالة على الخريطة</span>
+            <i class="fa-solid fa-arrow-left text-sm mr-1"></i>
+          </a>
+
+          <button 
+            id="addToCalendarBtn"
+            class="inline-flex items-center justify-center gap-2 text-xs font-cairo font-bold text-softBronze hover:text-gold-700 transition-colors pt-1"
+          >
+            <i class="fa-regular fa-calendar-plus text-gold-600"></i>
+            <span>إضافة موعد الحفل إلى تقويم هاتفي (Google Calendar)</span>
+          </button>
+        </div>
+
+        <!-- خيار تأكيد الحضور التفاعلي (RSVP) -->
+        <div class="bg-white border border-gold-200 rounded-2xl p-4 sm:p-5 space-y-3">
+          <p class="font-cairo text-xs sm:text-sm font-bold text-slateBronze">
+            هل ستشرفنا بحضورك الكريم؟
+          </p>
+
+          <div class="grid grid-cols-2 gap-3 max-w-sm mx-auto">
+            <button 
+              id="rsvpYesBtn"
+              class="py-2.5 px-3 rounded-xl bg-gold-50 border-2 border-gold-400 text-gold-800 font-cairo text-xs font-bold shadow-sm hover:bg-gold-100 transition-all active:scale-95 flex items-center justify-center gap-1.5"
+            >
+              <i class="fa-solid fa-circle-check text-gold-600"></i>
+              <span>يسعدني الحضور</span>
+            </button>
+
+            <button 
+              id="rsvpNoBtn"
+              class="py-2.5 px-3 rounded-xl bg-pearl border border-gold-200 text-softBronze font-cairo text-xs font-bold hover:bg-champagne/40 transition-all active:scale-95 flex items-center justify-center gap-1.5"
+            >
+              <i class="fa-solid fa-heart text-gold-600"></i>
+              <span>أعتذر بكل ود</span>
+            </button>
+          </div>
+          <p id="rsvpStatusText" class="text-[12px] font-cairo font-bold text-gold-700 hidden"></p>
+        </div>
+
+        <div class="pt-2 pb-2 space-y-1.5 border-t border-gold-200/80">
+          <p class="font-ruqaa text-2xl sm:text-3xl text-gold-700 font-bold">
+            حضوركم يكتمل به سرورنا ونفرح بكم 🤍✨
+          </p>
+          <p class="font-amiri text-softBronze text-sm sm:text-base font-semibold">
+            دامت دياركم عامرة بالأفراح والمسرات
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- إشعار عائم -->
+  <div id="toastMessage" class="fixed bottom-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 px-5 py-3 rounded-full bg-slateBronze text-white text-xs sm:text-sm font-cairo font-semibold shadow-2xl flex items-center gap-2">
+    <i class="fa-solid fa-circle-check text-gold-400"></i>
+    <span id="toastText">تمت العملية بنجاح</span>
+  </div>
+
+  <script>
+    const openEnvelopeBtn = document.getElementById('openEnvelopeBtn');
+    const envelopeSection = document.getElementById('envelopeSection');
+    const envelopeFlap = document.getElementById('envelopeFlap');
+    const waxSealWrapper = document.getElementById('waxSealWrapper');
+    const previewCard = document.getElementById('previewCard');
+    const cardSection = document.getElementById('cardSection');
+    const weddingAudio = document.getElementById('weddingAudio');
+    const toggleMusicBtn = document.getElementById('toggleMusicBtn');
+    const musicIcon = document.getElementById('musicIcon');
+
+    let isOpened = false;
+
+    // تشغيل الصوت ومزامنة زر التحكم
+    function playWeddingAudio() {
+      weddingAudio.play().then(() => {
+        toggleMusicBtn.classList.remove('hidden');
+        musicIcon.classList.add('music-spinning');
+      }).catch(err => {
+        // في حال منع المتصفح التشغيل التلقائي يظهر الزر ليتفاعل معه المستخدم
+        toggleMusicBtn.classList.remove('hidden');
+        musicIcon.className = 'fa-solid fa-volume-xmark';
+      });
+    }
+
+    toggleMusicBtn.addEventListener('click', () => {
+      if (weddingAudio.paused) {
+        weddingAudio.play();
+        musicIcon.className = 'fa-solid fa-volume-high music-spinning';
+      } else {
+        weddingAudio.pause();
+        musicIcon.className = 'fa-solid fa-volume-xmark';
+        musicIcon.classList.remove('music-spinning');
+      }
+    });
+
+    function openEnvelope() {
+      if (isOpened) return;
+      isOpened = true;
+
+      // تشغيل المقطع الصوتي عند كسر الختم
+      playWeddingAudio();
+
+      triggerPetalBurst();
+
+      waxSealWrapper.style.transition = 'all 0.35s ease';
+      waxSealWrapper.style.transform = 'translate(-50%, -50%) scale(1.25)';
+      waxSealWrapper.style.opacity = '0';
+
+      setTimeout(() => {
+        envelopeFlap.classList.add('opened');
+      }, 180);
+
+      setTimeout(() => {
+        previewCard.classList.add('card-out');
+      }, 450);
+
+      setTimeout(() => {
+        envelopeSection.style.transition = 'all 0.5s ease';
+        envelopeSection.style.opacity = '0';
+        envelopeSection.style.transform = 'translateY(-20px)';
+
+        setTimeout(() => {
+          envelopeSection.classList.add('hidden');
+          cardSection.classList.remove('hidden');
+          
+          requestAnimationFrame(() => {
+            cardSection.classList.remove('opacity-0', 'translate-y-8');
+            cardSection.classList.add('opacity-100', 'translate-y-0');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        }, 400);
+      }, 850);
+    }
+
+    openEnvelopeBtn.addEventListener('click', openEnvelope);
+    openEnvelopeBtn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openEnvelope();
+      }
+    });
+
+    // موعد الحفل: 19 نوفمبر 2026 الساعة 7:00 مساءً (19:00)
+    // الأشهر في جافاسكريبت تبدأ من 0 (شهر 10 = نوفمبر)
+    const targetDate = new Date(2026, 10, 19, 19, 0, 0).getTime();
+
+    const daysEl = document.getElementById('days');
+    const hoursEl = document.getElementById('hours');
+    const minutesEl = document.getElementById('minutes');
+    const secondsEl = document.getElementById('seconds');
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        daysEl.textContent = '00';
+        hoursEl.textContent = '00';
+        minutesEl.textContent = '00';
+        secondsEl.textContent = '00';
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      daysEl.textContent = days < 10 ? '0' + days : days;
+      hoursEl.textContent = hours < 10 ? '0' + hours : hours;
+      minutesEl.textContent = minutes < 10 ? '0' + minutes : minutes;
+      secondsEl.textContent = seconds < 10 ? '0' + seconds : seconds;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    const addToCalendarBtn = document.getElementById('addToCalendarBtn');
+    const toastMessage = document.getElementById('toastMessage');
+
+    function showToast(text) {
+      document.getElementById('toastText').textContent = text;
+      toastMessage.classList.remove('translate-y-24', 'opacity-0');
+      toastMessage.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toastMessage.classList.remove('translate-y-0', 'opacity-100');
+        toastMessage.classList.add('translate-y-24', 'opacity-0');
+      }, 3500);
+    }
+
+    addToCalendarBtn.addEventListener('click', () => {
+      const title = encodeURIComponent('حفل زفاف محمد & أميرته');
+      const details = encodeURIComponent('نتشرف بحضوركم حفل الزفاف في صالة ورد بلس (سيف الدولة - جانب مول السلام)');
+      const location = encodeURIComponent('صالة ورد بلس - سيف الدولة، جانب مول السلام');
+      // 2026-11-19 من 19:00 حتى 23:30
+      const dates = '20261119T190000/20261119T233000';
+      const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${dates}&details=${details}&location=${location}`;
+
+      window.open(googleCalendarUrl, '_blank');
+      showToast('جاري فتح تقويم الهاتف لحفظ الموعد');
+    });
+
+    const rsvpYesBtn = document.getElementById('rsvpYesBtn');
+    const rsvpNoBtn = document.getElementById('rsvpNoBtn');
+    const rsvpStatusText = document.getElementById('rsvpStatusText');
+
+    rsvpYesBtn.addEventListener('click', () => {
+      showToast('أهلاً وسهلاً بكم، تزدان ليلتنا بتشريفكم وحضوركم 🤍');
+      rsvpStatusText.textContent = '✓ تسعدنا مشاركتكم، نتشرف بحضوركم الكريم!';
+      rsvpStatusText.classList.remove('hidden');
+      triggerPetalBurst();
+    });
+
+    rsvpNoBtn.addEventListener('click', () => {
+      showToast('نشكركم على مشاعركم الطيبة ونسأل الله أن يجمعنا بكم في المسرات');
+      rsvpStatusText.textContent = 'نشكركم على مشاعركم النبيلة ودعواتكم الصادقة 🤍';
+      rsvpStatusText.classList.remove('hidden');
+    });
+
+    // كانفاس البتلات
+    const canvas = document.getElementById('petals-canvas');
+    const ctx = canvas.getContext('2d');
+
+    let width, height;
+    function resizeCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class SilkPetal {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * width;
+        this.y = -20 - Math.random() * 50;
+        this.size = Math.random() * 7 + 4;
+        this.speedY = Math.random() * 1.1 + 0.6;
+        this.speedX = (Math.random() - 0.5) * 0.8;
+        this.angle = Math.random() * Math.PI * 2;
+        this.rotationSpeed = (Math.random() - 0.5) * 0.02;
+        this.isGold = Math.random() > 0.75;
+        this.opacity = Math.random() * 0.6 + 0.3;
+      }
+      update() {
+        this.y += this.speedY;
+        this.x += this.speedX + Math.sin(this.angle) * 0.35;
+        this.angle += this.rotationSpeed;
+        if (this.y > height + 20) {
+          this.reset();
+        }
+      }
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.angle);
+        ctx.beginPath();
+        ctx.ellipse(0, 0, this.size, this.size * 0.6, 0, 0, Math.PI * 2);
+        if (this.isGold) {
+          ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity * 0.8})`;
+          ctx.shadowBlur = 6;
+          ctx.shadowColor = 'rgba(212, 175, 55, 0.4)';
+        } else {
+          ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+          ctx.shadowBlur = 4;
+          ctx.shadowColor = 'rgba(235, 220, 200, 0.5)';
+        }
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    const petals = Array.from({ length: 28 }, () => new SilkPetal());
+
+    function triggerPetalBurst() {
+      for (let i = 0; i < 25; i++) {
+        const p = new SilkPetal();
+        p.x = width / 2 + (Math.random() - 0.5) * 140;
+        p.y = height / 2 + (Math.random() - 0.5) * 120;
+        p.speedY = -(Math.random() * 3.5 + 1.2);
+        p.speedX = (Math.random() - 0.5) * 4;
+        petals.push(p);
+      }
+    }
+
+    function animatePetals() {
+      ctx.clearRect(0, 0, width, height);
+      petals.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animatePetals);
+    }
+    animatePetals();
+  </script>
+</body>
+</html>
