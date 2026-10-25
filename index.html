@@ -332,9 +332,10 @@
           </div>
         </div>
 
+        <!-- التعديل الأول: العبارة الرسمية لآل الطحان وآل أبودان -->
         <div class="py-1">
           <h2 class="font-cairo text-softBronze text-base sm:text-lg md:text-xl font-bold leading-relaxed px-2">
-            يتشرف العروسان بدعوتكم لمشاركتهما فرحة العمر
+            يتشرف آل الطحان وآل أبودان بدعوتكم لحضور حفل زفاف نجليهما
           </h2>
         </div>
 
@@ -438,6 +439,25 @@
           </button>
         </div>
 
+        <!-- التعديل الثاني: صندوق الملاحظات اللطيفة (التصوير والأطفال) مع أيقونات أنيقة متناسقة -->
+        <div class="bg-champagne/40 border border-gold-300/80 rounded-2xl p-4 sm:p-5 max-w-md mx-auto shadow-sm space-y-3">
+          <div class="flex items-center justify-center gap-3 text-slateBronze font-cairo text-xs sm:text-sm font-semibold">
+            <span class="w-8 h-8 rounded-full bg-white border border-gold-300 flex items-center justify-center text-gold-700 shadow-sm shrink-0">
+              <i class="fa-solid fa-camera-retro text-sm"></i>
+            </span>
+            <p class="leading-relaxed">دعي التصوير للمصورة وعيشي اللحظة أنتِ</p>
+          </div>
+
+          <div class="h-[1px] w-3/4 mx-auto bg-gradient-to-r from-transparent via-gold-300 to-transparent"></div>
+
+          <div class="flex items-center justify-center gap-3 text-slateBronze font-cairo text-xs sm:text-sm font-semibold">
+            <span class="w-8 h-8 rounded-full bg-white border border-gold-300 flex items-center justify-center text-gold-700 shadow-sm shrink-0">
+              <i class="fa-solid fa-moon text-sm"></i>
+            </span>
+            <p class="leading-relaxed">قبلة من العروسين لأطفالكم قبل النوم</p>
+          </div>
+        </div>
+
         <!-- خيار تأكيد الحضور التفاعلي (RSVP) -->
         <div class="bg-white border border-gold-200 rounded-2xl p-4 sm:p-5 space-y-3">
           <p class="font-cairo text-xs sm:text-sm font-bold text-slateBronze">
@@ -504,7 +524,6 @@
         toggleMusicBtn.classList.remove('hidden');
         musicIcon.classList.add('music-spinning');
       }).catch(err => {
-        // في حال منع المتصفح التشغيل التلقائي يظهر الزر ليتفاعل معه المستخدم
         toggleMusicBtn.classList.remove('hidden');
         musicIcon.className = 'fa-solid fa-volume-xmark';
       });
@@ -569,7 +588,6 @@
     });
 
     // موعد الحفل: 19 نوفمبر 2026 الساعة 7:00 مساءً (19:00)
-    // الأشهر في جافاسكريبت تبدأ من 0 (شهر 10 = نوفمبر)
     const targetDate = new Date(2026, 10, 19, 19, 0, 0).getTime();
 
     const daysEl = document.getElementById('days');
@@ -618,9 +636,8 @@
 
     addToCalendarBtn.addEventListener('click', () => {
       const title = encodeURIComponent('حفل زفاف محمد & أميرته');
-      const details = encodeURIComponent('نتشرف بحضوركم حفل الزفاف في صالة ورد بلس (سيف الدولة - جانب مول السلام)');
+      const details = encodeURIComponent('يتشرف آل الطحان وآل أبودان بدعوتكم لحضور حفل زفاف نجليهما في صالة ورد بلس (سيف الدولة - جانب مول السلام)');
       const location = encodeURIComponent('صالة ورد بلس - سيف الدولة، جانب مول السلام');
-      // 2026-11-19 من 19:00 حتى 23:30
       const dates = '20261119T190000/20261119T233000';
       const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${dates}&details=${details}&location=${location}`;
 
